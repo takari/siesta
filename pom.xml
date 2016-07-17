@@ -18,9 +18,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.sonatype.buildsupport</groupId>
-    <artifactId>public-parent</artifactId>
-    <version>7</version>
+    <groupId>io.takari</groupId>
+    <artifactId>takari</artifactId>
+    <version>14</version>
   </parent>
 
   <groupId>io.takari.siesta</groupId>
@@ -31,14 +31,6 @@
   <version>2.2.1-SNAPSHOT</version>
 
   <url>https://github.com/sonatype/sisu-siesta</url>
-
-  <!--
-  <scm>
-    <connection>scm:git:git://github.com/sonatype/siesta.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/sonatype/siesta.git</developerConnection>
-    <url>https://github.com/sonatype/siesta</url>
-  </scm>
-  -->
 
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
