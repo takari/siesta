@@ -32,11 +32,13 @@
 
   <url>https://github.com/sonatype/sisu-siesta</url>
 
+  <!--
   <scm>
     <connection>scm:git:git://github.com/sonatype/siesta.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/sonatype/siesta.git</developerConnection>
     <url>https://github.com/sonatype/siesta</url>
   </scm>
+  -->
 
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
