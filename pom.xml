@@ -35,14 +35,14 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
 
-    <resteasy.version>3.0.18.Final</resteasy.version>
-    <jackson2.version>2.8.0</jackson2.version>
-    
+    <resteasy.version>3.0.20.Final</resteasy.version>
+    <jackson2.version>2.8.2</jackson2.version>
+
     <repoHost>https://otto.takari.io</repoHost>
     <releaseName>Takari Releases</releaseName>
     <releaseUrl>${repoHost}/service/local/staging/deploy/maven2</releaseUrl>
     <snapshotName>Takari Snapshots</snapshotName>
-    <snapshotUrl>${repoHost}/content/repositories/snapshots</snapshotUrl>    
+    <snapshotUrl>${repoHost}/content/repositories/snapshots</snapshotUrl>
   </properties>
 
   <distributionManagement>
