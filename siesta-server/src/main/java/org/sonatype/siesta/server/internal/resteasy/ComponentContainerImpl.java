@@ -20,12 +20,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Path;
+import javax.ws.rs.ext.RuntimeDelegate;
 
 import org.sonatype.siesta.Resource;
 import org.sonatype.siesta.server.ComponentContainer;
 
 import org.eclipse.sisu.BeanEntry;
-import org.jboss.resteasy.logging.Logger.LoggerType;
 import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
 import org.jboss.resteasy.spi.ResteasyDeployment;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
@@ -43,9 +43,11 @@ public class ComponentContainerImpl
 {
   private static final Logger log = LoggerFactory.getLogger(ComponentContainerImpl.class);
 
+  private transient final ResteasyDeployment deployment = new SisuResteasyDeployment();
+
   public ComponentContainerImpl() {
-    // Configure RESTEasy to use SLF4j
-    org.jboss.resteasy.logging.Logger.setLoggerType(LoggerType.SLF4J);
+    // Configure runtime delegate as early as possible
+    RuntimeDelegate.setInstance(deployment.getProviderFactory());
   }
 
   @Override
@@ -61,7 +63,9 @@ public class ComponentContainerImpl
   }
 
   private void doInit(final ServletConfig servletConfig) throws ServletException {
-    servletConfig.getServletContext().setAttribute(ResteasyDeployment.class.getName(), new SisuResteasyDeployment());
+    deployment.start();
+
+    servletConfig.getServletContext().setAttribute(ResteasyDeployment.class.getName(), deployment);
 
     super.init(servletConfig);
 
@@ -81,6 +85,13 @@ public class ComponentContainerImpl
       log.debug("Instances: {}", providerFactory.getInstances());
       log.debug("Exception mappers: {}", providerFactory.getExceptionMappers());
     }
+  }
+
+  @Override
+  public void destroy() {
+    super.destroy();
+
+    deployment.stop();
   }
 
   @Override
