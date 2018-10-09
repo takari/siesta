@@ -27,7 +27,7 @@
   <name>${project.groupId}:${project.artifactId}</name>
   <packaging>pom</packaging>
 
-  <version>2.3.1-SNAPSHOT</version>
+  <version>2.3.1</version>
 
   <url>https://github.com/sonatype/sisu-siesta</url>
 
@@ -306,31 +306,31 @@
       <dependency>
         <groupId>io.takari.siesta</groupId>
         <artifactId>siesta-api</artifactId>
-        <version>2.3.1-SNAPSHOT</version>
+        <version>2.3.1</version>
       </dependency>
 
       <dependency>
         <groupId>io.takari.siesta</groupId>
         <artifactId>siesta-jackson2</artifactId>
-        <version>2.3.1-SNAPSHOT</version>
+        <version>2.3.1</version>
       </dependency>
 
       <dependency>
         <groupId>io.takari.siesta</groupId>
         <artifactId>siesta-server</artifactId>
-        <version>2.3.1-SNAPSHOT</version>
+        <version>2.3.1</version>
       </dependency>
 
       <dependency>
         <groupId>io.takari.siesta</groupId>
         <artifactId>siesta-webapp</artifactId>
-        <version>2.3.1-SNAPSHOT</version>
+        <version>2.3.1</version>
       </dependency>
 
       <dependency>
         <groupId>io.takari.siesta</groupId>
         <artifactId>siesta-client</artifactId>
-        <version>2.3.1-SNAPSHOT</version>
+        <version>2.3.1</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -426,4 +426,8 @@
       </plugin>
     </plugins>
   </build>
+
+  <scm>
+    <tag>siesta-2.3.1</tag>
+  </scm>
 </project>
