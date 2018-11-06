@@ -24,7 +24,7 @@ import javax.ws.rs.ext.RuntimeDelegate;
 
 import org.sonatype.siesta.Resource;
 import org.sonatype.siesta.server.ComponentContainer;
-
+import org.sonatype.siesta.server.SiestaServlet;
 import org.eclipse.sisu.BeanEntry;
 import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
 import org.jboss.resteasy.spi.ResteasyDeployment;
@@ -52,6 +52,11 @@ public class ComponentContainerImpl
 
   @Override
   public void init(final ServletConfig servletConfig) throws ServletException {
+    if (isPresetTccl(servletConfig)) {
+      doInit(servletConfig);
+      return;
+    }
+
     final ClassLoader cl = Thread.currentThread().getContextClassLoader();
     try {
       Thread.currentThread().setContextClassLoader(ResteasyProviderFactory.class.getClassLoader());
@@ -60,6 +65,11 @@ public class ComponentContainerImpl
     finally {
       Thread.currentThread().setContextClassLoader(cl);
     }
+  }
+
+  private boolean isPresetTccl(final ServletConfig servletConfig) {
+    Object presetTccl = servletConfig.getServletContext().getAttribute(SiestaServlet.ATTR_PRESET_TCCL);
+    return presetTccl != null && (presetTccl == Boolean.TRUE || Boolean.parseBoolean(presetTccl.toString()));
   }
 
   private void doInit(final ServletConfig servletConfig) throws ServletException {

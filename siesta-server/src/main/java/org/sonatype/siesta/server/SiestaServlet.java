@@ -50,6 +50,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class SiestaServlet
     extends HttpServlet
 {
+  public static final String ATTR_PRESET_TCCL = SiestaServlet.class.getName() + ".presetContextClassloader";
+  
   private final Logger log = LoggerFactory.getLogger(getClass());
 
   private final BeanLocator beanLocator;
